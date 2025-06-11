@@ -1,0 +1,108 @@
+```yaml
+version: '3.8'
+
+services:
+  # Crawl4AI - парсер сайтов
+  crawl4ai:
+    image: unclecode/crawl4ai:0.6.0-r1
+    container_name: crawl4ai
+    ports:
+      - "11235:11235"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - crawl4ai_data:/app/data
+    restart: unless-stopped
+    depends_on:
+      - redis
+    networks:
+      - property-network
+
+  # Ollama - локальная AI
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - property-network
+
+  # PostgreSQL - база данных
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-property_scraper}
+      - POSTGRES_USER=${POSTGRES_USER:-scraper}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-scraper123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - property-network
+
+  # Redis - кэширование
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - property-network
+
+  # n8n - автоматизация
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_USER:-admin}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_PASSWORD:-admin123}
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=America/Argentina/Buenos_Aires
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+    networks:
+      - property-network
+
+  # Grafana - мониторинг
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      - property-network
+
+volumes:
+  crawl4ai_data:
+  ollama_data:
+  postgres_data:
+  redis_data:
+  n8n_data:
+  grafana_data:
+
+networks:
+  property-network:
+    driver: bridge
