@@ -1,0 +1,89 @@
+# =========================================
+# PROPERTY SCRAPER MVP - PYTHON DEPENDENCIES
+# =========================================
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+asyncpg==0.29.0
+databases[postgresql]==0.8.0
+alembic==1.12.1
+psycopg2-binary==2.9.9
+
+# Cache & Queue
+redis==5.0.1
+celery==5.3.4
+
+# HTTP Clients
+httpx==0.25.2
+aiohttp==3.9.1
+requests==2.31.0
+
+# Telegram Bot
+aiogram==3.20.0
+
+# Data Processing
+pandas==2.1.3
+numpy==1.24.4
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# AI & ML
+openai==1.3.7
+anthropic==0.7.8
+tiktoken==0.5.1
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+jinja2==3.1.2
+markupsafe==2.1.3
+
+# Monitoring & Logging
+prometheus-client==0.19.0
+sentry-sdk[fastapi]==1.38.0
+structlog==23.2.0
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.10.1
+flake8==6.1.0
+mypy==1.7.0
+
+# Date & Time
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Async Support
+asyncio==3.4.3
+aiofiles==23.2.1
+
+# Text Processing
+unidecode==1.3.7
+textdistance==4.6.0
+
+# Image Processing (optional)
+Pillow==10.1.0
+
+# Encryption & Security
+cryptography==41.0.7
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+
+# Environment & Config
+click==8.1.7
+rich==13.7.0
+typer==0.9.0
+
+# =========================================
+# INSTALLATION NOTES:
+# =========================================
+# Install with: pip install -r requirements.txt
+# For development: pip install -r requirements.txt -r requirements-dev.txt
+# Update all: pip install -r requirements.txt --upgrade
