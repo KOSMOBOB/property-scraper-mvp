@@ -1,0 +1,185 @@
+{
+  "description": "Конфигурация сайтов недвижимости Буэнос-Айреса",
+  "version": "1.0.0",
+  "last_updated": "2025-01-15",
+  
+  "sites": {
+    "zonaprop": {
+      "name": "ZonaProp",
+      "description": "#1 сайт недвижимости в Аргентине",
+      "base_url": "https://www.zonaprop.com.ar",
+      "search_urls": {
+        "alquiler_caba": "https://www.zonaprop.com.ar/propiedades/alquiler-capital-federal.html",
+        "venta_caba": "https://www.zonaprop.com.ar/propiedades/venta-capital-federal.html",
+        "alquiler_palermo": "https://www.zonaprop.com.ar/propiedades/alquiler-palermo.html",
+        "alquiler_recoleta": "https://www.zonaprop.com.ar/propiedades/alquiler-recoleta.html"
+      },
+      "selectors": {
+        "property_container": ".posting-item, .card-container",
+        "title": ".posting-title h2, .property-title, h3.posting-title",
+        "price": ".posting-price, .price-amount, .posting-price-container",
+        "location": ".posting-location, .property-location, .posting-address",
+        "bedrooms": ".posting-data-item:contains('dormitorio'), .amenities .bedrooms",
+        "bathrooms": ".posting-data-item:contains('baño'), .amenities .bathrooms",
+        "area": ".posting-data-item:contains('m²'), .posting-data-item:contains('m2')",
+        "url": "a.posting-link, .card-link, .property-link",
+        "image": ".posting-photo img, .property-image img",
+        "description": ".posting-description, .property-description"
+      },
+      "rate_limit_ms": 2000,
+      "max_pages": 10,
+      "user_agent": "Mozilla/5.0 (compatible; PropertyBot/1.0; +http://propertybot.ar)",
+      "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "DNT": "1"
+      }
+    },
+    
+    "argenprop": {
+      "name": "ArgenProp",
+      "description": "#2 сайт недвижимости в Аргентине",
+      "base_url": "https://www.argenprop.com",
+      "search_urls": {
+        "alquiler_caba": "https://www.argenprop.com/propiedades/alquiler/capital-federal",
+        "venta_caba": "https://www.argenprop.com/propiedades/venta/capital-federal",
+        "alquiler_palermo": "https://www.argenprop.com/propiedades/alquiler/capital-federal/palermo",
+        "alquiler_recoleta": "https://www.argenprop.com/propiedades/alquiler/capital-federal/recoleta"
+      },
+      "selectors": {
+        "property_container": ".card, .listing-card",
+        "title": ".card__title, .listing-title",
+        "price": ".card__price, .listing-price, .price-container",
+        "location": ".card__address, .listing-location, .property-address",
+        "bedrooms": ".card__amenity--bedrooms, .amenities-bedrooms",
+        "bathrooms": ".card__amenity--bathrooms, .amenities-bathrooms",
+        "area": ".card__amenity--area, .amenities-area",
+        "url": ".card__link, .listing-link",
+        "image": ".card__image img, .listing-image img",
+        "description": ".card__description, .listing-description"
+      },
+      "rate_limit_ms": 3000,
+      "max_pages": 8,
+      "user_agent": "Mozilla/5.0 (compatible; PropertyBot/1.0; +http://propertybot.ar)"
+    },
+    
+    "properati": {
+      "name": "Properati",
+      "description": "Платформа OLX для недвижимости",
+      "base_url": "https://www.properati.com.ar",
+      "search_urls": {
+        "alquiler_caba": "https://www.properati.com.ar/s/capital-federal/departamento/alquiler/",
+        "venta_caba": "https://www.properati.com.ar/s/capital-federal/departamento/venta/",
+        "casas_alquiler": "https://www.properati.com.ar/s/capital-federal/casa/alquiler/"
+      },
+      "selectors": {
+        "property_container": ".listing-card, .property-item",
+        "title": ".listing-card__information-title, .property-title",
+        "price": ".listing-card__price, .property-price",
+        "location": ".listing-card__location, .property-location",
+        "bedrooms": ".listing-card__amenity--bedrooms, .property-bedrooms",
+        "bathrooms": ".listing-card__amenity--bathrooms, .property-bathrooms",
+        "area": ".listing-card__amenity--area, .property-area",
+        "url": ".listing-card__link, .property-link",
+        "image": ".listing-card__image img, .property-image img"
+      },
+      "rate_limit_ms": 2500,
+      "max_pages": 12,
+      "user_agent": "Mozilla/5.0 (compatible; PropertyBot/1.0; +http://propertybot.ar)"
+    },
+    
+    "remax": {
+      "name": "RE/MAX Argentina",
+      "description": "Международная сеть недвижимости",
+      "base_url": "https://www.remax.com.ar",
+      "search_urls": {
+        "alquiler_caba": "https://www.remax.com.ar/listados?tipo=alquiler&ubicacion=capital-federal",
+        "venta_caba": "https://www.remax.com.ar/listados?tipo=venta&ubicacion=capital-federal"
+      },
+      "selectors": {
+        "property_container": ".property-item, .listing-container",
+        "title": ".property-title, .listing-title",
+        "price": ".property-price, .listing-price",
+        "location": ".property-location, .listing-address",
+        "bedrooms": ".property-bedrooms, .property-features .bedrooms",
+        "bathrooms": ".property-bathrooms, .property-features .bathrooms",
+        "area": ".property-area, .property-features .area",
+        "url": ".property-link, .listing-url",
+        "image": ".property-image img, .listing-photo img"
+      },
+      "rate_limit_ms": 4000,
+      "max_pages": 6,
+      "user_agent": "Mozilla/5.0 (compatible; PropertyBot/1.0; +http://propertybot.ar)"
+    },
+    
+    "mercadolibre": {
+      "name": "MercadoLibre Inmuebles",
+      "description": "Крупнейший маркетплейс Латинской Америки",
+      "base_url": "https://inmuebles.mercadolibre.com.ar",
+      "search_urls": {
+        "alquiler_caba": "https://inmuebles.mercadolibre.com.ar/alquiler/capital-federal/",
+        "venta_caba": "https://inmuebles.mercadolibre.com.ar/venta/capital-federal/",
+        "departamentos": "https://inmuebles.mercadolibre.com.ar/departamentos/capital-federal/"
+      },
+      "selectors": {
+        "property_container": ".ui-search-item, .item-container",
+        "title": ".ui-search-item__title, .item-title",
+        "price": ".andes-money-amount__fraction, .item-price",
+        "location": ".ui-search-item__location, .item-location",
+        "bedrooms": ".ui-search-item__group__element:contains('dormitorio')",
+        "bathrooms": ".ui-search-item__group__element:contains('baño')",
+        "area": ".ui-search-item__group__element:contains('m²')",
+        "url": ".ui-search-item__group__element a, .item-link",
+        "image": ".ui-search-item__image img, .item-image img"
+      },
+      "rate_limit_ms": 1500,
+      "max_pages": 15,
+      "user_agent": "Mozilla/5.0 (compatible; PropertyBot/1.0; +http://propertybot.ar)"
+    }
+  },
+  
+  "global_settings": {
+    "request_timeout": 30,
+    "retry_attempts": 3,
+    "retry_delay": 5,
+    "respect_robots_txt": true,
+    "concurrent_requests": 2,
+    "cache_duration_hours": 6,
+    "min_delay_between_sites": 10
+  },
+  
+  "data_processing": {
+    "price_patterns": {
+      "peso": ["\\$\\s*([\\d,\\.]+)", "ARS\\s*([\\d,\\.]+)", "([\\d,\\.]+)\\s*pesos"],
+      "dollar": ["USD\\s*([\\d,\\.]+)", "U\\$S\\s*([\\d,\\.]+)", "([\\d,\\.]+)\\s*dólares"]
+    },
+    "area_patterns": ["([\\d,\\.]+)\\s*m²", "([\\d,\\.]+)\\s*m2", "([\\d,\\.]+)\\s*metros"],
+    "room_patterns": ["(\\d+)\\s*dormitorio", "(\\d+)\\s*habitación", "(\\d+)\\s*cuarto"],
+    "bathroom_patterns": ["(\\d+)\\s*baño", "(\\d+)\\s*toilette"]
+  },
+  
+  "neighborhoods": {
+    "premium": ["Palermo", "Recoleta", "Puerto Madero", "Belgrano", "Núñez"],
+    "mid_range": ["Villa Crespo", "Caballito", "Villa Urquiza", "Colegiales", "Almagro"],
+    "budget": ["Once", "Balvanera", "San Telmo", "Barracas", "La Boca"],
+    "trending": ["Villa Crick", "Chacarita", "Parque Patricios", "Barrio Norte"]
+  },
+  
+  "proxy_settings": {
+    "enabled": false,
+    "rotation_enabled": true,
+    "providers": ["proxy1.example.com:8080", "proxy2.example.com:8080"],
+    "authentication": {
+      "username": "",
+      "password": ""
+    }
+  },
+  
+  "monitoring": {
+    "alert_on_errors": true,
+    "max_error_rate": 0.1,
+    "alert_channels": ["telegram", "email"],
+    "performance_tracking": true
+  }
+}
