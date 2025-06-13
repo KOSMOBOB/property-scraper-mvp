@@ -4,6 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func
 from databases import Database
 
+from .config import settings
+
 Base = declarative_base()
 
 class Property(Base):
