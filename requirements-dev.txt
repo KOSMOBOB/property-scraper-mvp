@@ -1,0 +1,51 @@
+# requirements-dev.txt - Зависимости для разработки
+
+# Тестирование
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+pytest-timeout==2.2.0
+faker==20.1.0
+factory-boy==3.3.0
+httpx-mock==0.4.0
+
+# Качество кода
+black==23.11.0
+isort==5.13.0
+flake8==6.1.0
+flake8-docstrings==1.7.0
+flake8-bugbear==23.11.28
+mypy==1.7.1
+pylint==3.0.3
+bandit==1.7.5  # Проверка безопасности
+
+# Отладка
+ipdb==0.13.13
+ipython==8.18.1
+django-extensions==3.2.3
+django-debug-toolbar==4.2.0
+
+# Документация
+sphinx==7.2.6
+sphinx-rtd-theme==2.0.0
+sphinx-autodoc-typehints==1.25.2
+mkdocs==1.5.3
+mkdocs-material==9.5.3
+
+# Профилирование
+memory-profiler==0.61.0
+line-profiler==4.1.2
+py-spy==0.3.14
+
+# Git hooks
+pre-commit==3.5.0
+
+# Локальная разработка
+watchdog==3.0.0
+python-dotenv[cli]==1.0.0
+
+# Типизация
+types-redis==4.6.0.11
+types-requests==2.31.0.10
+types-python-dateutil==2.8.19.14
