@@ -19,6 +19,7 @@ from aiogram.enums import ParseMode
 import httpx
 from sqlalchemy import select, insert, update, and_, or_
 from sqlalchemy.ext.asyncio import AsyncSession
+from databases import Database
 
 from .models import User, UserSearch, Property, Notification, database
 from .config import settings
