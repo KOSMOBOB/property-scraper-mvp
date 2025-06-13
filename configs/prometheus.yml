@@ -1,0 +1,69 @@
+# configs/prometheus.yml - Конфигурация мониторинга Prometheus
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'property-scraper'
+
+# Настройки оповещений
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# Правила загрузки
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# Конфигурация сбора метрик
+scrape_configs:
+  # Мониторинг самого Prometheus
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Мониторинг API сервера
+  - job_name: 'api-server'
+    static_configs:
+      - targets: ['api-server:8000']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Мониторинг Crawl4AI
+  - job_name: 'crawl4ai'
+    static_configs:
+      - targets: ['crawl4ai:11235']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Мониторинг PostgreSQL через postgres_exporter
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres-exporter:9187']
+    scrape_interval: 30s
+
+  # Мониторинг Redis через redis_exporter  
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+    scrape_interval: 30s
+
+  # Мониторинг хост-системы через node_exporter
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+  # Мониторинг Docker контейнеров через cadvisor
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    scrape_interval: 30s
+
+  # Мониторинг Telegram бота (если добавите метрики)
+  - job_name: 'telegram-bot'
+    static_configs:
+      - targets: ['telegram-bot:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
