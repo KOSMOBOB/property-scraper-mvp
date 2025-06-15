@@ -20,8 +20,8 @@ async def lifespan(app: FastAPI):
     await database.connect()
     
     # Инициализация таблиц
-    async with engine.begin() as conn:
-        await conn.run_sync(Property.metadata.create_all)
+    #async with engine.begin() as conn:
+        #await conn.run_sync(Property.metadata.create_all)
     
     # Запуск фонового парсинга
     scraper = PropertyScraper()
