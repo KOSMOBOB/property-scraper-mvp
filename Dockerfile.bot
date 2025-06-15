@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Копирование кода приложения
 COPY app/ ./app/
+COPY configs/ ./configs/
 
 # Создание пользователя для безопасности
 RUN useradd -m -u 1000 botuser && chown -R botuser:botuser /app
@@ -35,4 +36,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8080/health || exit 1
 
 # Команда запуска бота
-CMD ["python", "-m", "app.telegram_bot"]
+CMD ["python", "app/telegram_bot.py"]
