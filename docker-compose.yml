@@ -113,6 +113,7 @@ services:
       - ollama
     networks:
       - property-network
+    command: ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]  # ДОБАВИТЬ ЭТУ СТРОКУ
 
   telegram-bot:
     build: 
