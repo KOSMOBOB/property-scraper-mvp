@@ -20,7 +20,8 @@ class PropertyScraper:
     def _load_sites_config(self) -> Dict:
         try:
             with open("/app/configs/sites_config.json", "r") as f:
-                return json.load(f)
+                data = json.load(f)
+                return data.get('sites', {})  # Добавлено: берем поле 'sites'
         except Exception as e:
             logger.error(f"Failed to load sites config: {e}")
             return {}
