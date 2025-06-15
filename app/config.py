@@ -1,5 +1,5 @@
-# app/config.py - Полная конфигурация системы
-from pydantic_settings import BaseSettings
+# app/config.py
+from pydantic import BaseSettings  
 from typing import Optional
 
 class Settings(BaseSettings):
