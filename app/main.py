@@ -7,7 +7,7 @@ import logging
 from typing import List, Dict, Any
 
 from .scraper import PropertyScraper
-from .models import Property, database, engine
+from .models import Property, database
 from .config import settings
 
 logging.basicConfig(level=logging.INFO)
